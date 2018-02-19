@@ -22,7 +22,12 @@ public class StateMachine : MonoBehaviour
 
     public void ExecuteStateUpdate()
     {
-		if (currentState != null) currentState.Execute();
+		if (currentState != null){
+            IState state = currentState.Execute();
+            if (state != null){
+                ChangeState(state);
+            }
+        }
     }
 
 	public void ChangeToPrevious()

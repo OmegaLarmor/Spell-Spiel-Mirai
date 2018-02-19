@@ -10,12 +10,13 @@ public class PlayerTurn : IState
         Debug.Log("Player turn start!");
     }
 
-    public void Execute()
+    public IState Execute()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("I chose my option with Space!");
+            return BattleController.enemyTurn;
         }
+        else return null;
     }
 
     public void Exit()

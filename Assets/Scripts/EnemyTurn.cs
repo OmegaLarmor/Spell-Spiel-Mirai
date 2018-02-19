@@ -10,12 +10,13 @@ public class EnemyTurn : IState
         Debug.Log("Enemy turn start!");
     }
 
-    public void Execute()
+    public IState Execute()
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Debug.Log("I chose my option with X!");
+            return BattleController.playerTurn;
         }
+        else return null;
     }
 
     public void Exit()

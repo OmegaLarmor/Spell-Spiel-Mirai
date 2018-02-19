@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IState {
 
 	void Enter();
-	void Execute(); //ie Update
+	IState Execute(); //ie Update
 	void Exit();
 
 }

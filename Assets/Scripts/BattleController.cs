@@ -7,8 +7,8 @@ public class BattleController : MonoBehaviour
 
     private bool isPlayerTurn = true;
 	private StateMachine stateMachine;
-	private IState playerTurn = new PlayerTurn();
-	private IState enemyTurn = new EnemyTurn();
+	public static IState playerTurn = new PlayerTurn();
+	public static IState enemyTurn = new EnemyTurn();
 
     public VoiceHandler voice;
     private Dictionary<string, GameObject> spellWordPairs = new Dictionary<string, GameObject>();

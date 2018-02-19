@@ -42,8 +42,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 
             _contextPhrases = transform.Find("Canvas/InputField_SpeechContext").GetComponent<InputField>();
 
-            _startRecordButton.onClick.AddListener(StartRecordButtonOnClickHandler);
-            _stopRecordButton.onClick.AddListener(StopRecordButtonOnClickHandler);
+            _startRecordButton.onClick.AddListener(StartRecording);
+            _stopRecordButton.onClick.AddListener(StopRecording);
 
             _speechRecognitionState.color = Color.white;
             _startRecordButton.interactable = true;
@@ -70,7 +70,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
         }
 
 
-        private void StartRecordButtonOnClickHandler()
+        private void StartRecording()
         {
             _startRecordButton.interactable = false;
             _stopRecordButton.interactable = true;
@@ -79,7 +79,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
             _speechRecognition.StartRecord(_isRuntimeDetectionToggle.isOn);
         }
 
-        private void StopRecordButtonOnClickHandler()
+        private void StopRecording()
         {
             ApplySpeechContextPhrases();
 

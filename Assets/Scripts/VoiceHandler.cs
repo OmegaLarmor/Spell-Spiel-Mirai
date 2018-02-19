@@ -18,6 +18,10 @@ public class VoiceHandler : MonoBehaviour
 
     public System.Action<string> shareRecognitionEvent;
 
+    public bool isRecording = false;
+    public bool isWaiting = false;
+    public float maxWaitTime = 5;
+
     // Use this for initialization
     void Start()
     {
@@ -30,8 +34,8 @@ public class VoiceHandler : MonoBehaviour
         _speechRecognition.LongRecognitionSuccessEvent += LongRecognitionSuccessEventHandler;
 
 		//Find stuff
-		_startRecordButton.onClick.AddListener(StartRecordButtonOnClickHandler);
-        _stopRecordButton.onClick.AddListener(StopRecordButtonOnClickHandler);
+		_startRecordButton.onClick.AddListener(StartRecording);
+        _stopRecordButton.onClick.AddListener(StopRecording);
 
 		_startRecordButton.interactable = true;
         _stopRecordButton.interactable = false;
@@ -45,17 +49,33 @@ public class VoiceHandler : MonoBehaviour
 		_speechRecognition.LongRecognitionSuccessEvent -= LongRecognitionSuccessEventHandler;
 	}
 
-	private void StartRecordButtonOnClickHandler()
+	private void StartRecording()
         {
+            if(isRecording || isWaiting){
+                Debug.Log("Hey! We can't record now!");
+                return;
+            }
+            isRecording = true;
+            isWaiting = false;
+
             _startRecordButton.interactable = false;
             _stopRecordButton.interactable = true;
             _speechRecognitionResult.text = "";
             _speechRecognition.StartRecord(_isRuntimeDetectionToggle.isOn);
+
+            StartCoroutine(LimitRecordTime(maxWaitTime));
         }
 
-	private void StopRecordButtonOnClickHandler()
+	private void StopRecording()
 	{
 		//ApplySpeechContextPhrases(); Not sure if needed/useful
+
+        if(!isRecording || isWaiting){
+            Debug.Log("Hey! We can't stop recording now!");
+            return;
+        }
+        isRecording = false;
+        isWaiting = true;
 
 		_stopRecordButton.interactable = false;
 		_speechRecognition.StopRecord();
@@ -63,6 +83,7 @@ public class VoiceHandler : MonoBehaviour
 
     private void SpeechRecognizedFailedEventHandler(string obj, long requestIndex)
     {
+        isWaiting = false;
         _speechRecognitionResult.text = "Speech Recognition failed with error: " + obj;
 
 		if (!_isRuntimeDetectionToggle.isOn)
@@ -74,6 +95,8 @@ public class VoiceHandler : MonoBehaviour
 
     private void RecognitionSuccessEventHandler(RecognitionResponse obj, long requestIndex)
     {
+        isWaiting = false;
+
         if (!_isRuntimeDetectionToggle.isOn)
         {
             _startRecordButton.interactable = true;
@@ -84,21 +107,11 @@ public class VoiceHandler : MonoBehaviour
             string bestFit = obj.results[0].alternatives[0].transcript;
             _speechRecognitionResult.text = "Word heard: " + bestFit;
 
-            //Loop of death and sorrow. May this be recorded in history, and shared through generations.
-            /* 
-            string other = "\nDetected alternative: ";
-
-            foreach (var result in obj.results)
-            {
-                foreach (var alternative in result.alternatives)
-                {
-                    if (obj.results[0].alternatives[0] != alternative)
-                        other += alternative.transcript + ", ";
-                }
-            }*/
-
             Debug.Log("Called RecognitionSuccessHandler");
-            if (shareRecognitionEvent != null){shareRecognitionEvent(bestFit);}
+
+            if (shareRecognitionEvent != null){
+                shareRecognitionEvent(bestFit);
+            }
         }
         else
         {
@@ -138,6 +151,16 @@ public class VoiceHandler : MonoBehaviour
         else
         {
             _speechRecognitionResult.text = "Speech Recognition succeeded! Words are no detected.";
+        }
+    }
+
+    IEnumerator LimitRecordTime(float maxTime){
+
+        yield return new WaitForSeconds(maxTime); //Let the record happen...
+
+        if (isRecording){
+            Debug.Log("That's enough! Cut the audio!");
+            StopRecording(); //That's enough! Cut the audio!
         }
     }
 }

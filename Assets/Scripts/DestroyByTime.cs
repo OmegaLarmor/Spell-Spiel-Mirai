@@ -13,6 +13,7 @@ public class DestroyByTime : MonoBehaviour {
 
 		if (killAfterAnim){
 			lifetime = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+			lifetime -= 0.1f; //lifehack, avoid the loop first frame
 		}
 
         Destroy(gameObject, lifetime);

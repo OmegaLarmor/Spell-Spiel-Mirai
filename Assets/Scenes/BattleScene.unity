@@ -144,6 +144,9 @@ MonoBehaviour:
   _startRecordButton: {fileID: 459731699}
   _stopRecordButton: {fileID: 1599850088}
   _speechRecognitionResult: {fileID: 1255010704}
+  isRecording: 0
+  isWaiting: 0
+  maxWaitTime: 3
 --- !u!4 &8994411
 Transform:
   m_ObjectHideFlags: 0
@@ -500,6 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 479747635}
   - component: {fileID: 479747636}
+  - component: {fileID: 479747637}
   m_Layer: 0
   m_Name: BattleController
   m_TagString: Untagged
@@ -534,6 +538,17 @@ MonoBehaviour:
   voice: {fileID: 8994410}
   fireball: {fileID: 1390482818019056, guid: 2bc17c54d9a2c4a43ac7aba3b27a656b, type: 2}
   waterGun: {fileID: 1416620681899884, guid: d0fdacc14f8bd174aafc4ccced538532, type: 2}
+--- !u!114 &479747637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479747634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5872823c1bdc3479cd5ee747809a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &512126579
 GameObject:
   m_ObjectHideFlags: 0

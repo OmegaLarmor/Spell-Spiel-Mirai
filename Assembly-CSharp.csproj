@@ -72,8 +72,12 @@
      <Compile Include="Assets\FrostweepGames\GCSpeechRecognition\Scripts\Core\Utilites\AudioTools.cs" />
      <Compile Include="Assets\FrostweepGames\GCSpeechRecognition\Scripts\Core\Utilites\ServiceLocator.cs" />
      <Compile Include="Assets\FrostweepGames\GCSpeechRecognition\Scripts\GCSpeechRecognition.cs" />
+     <Compile Include="Assets\Scripts\BattleController.cs" />
+     <Compile Include="Assets\Scripts\Character.cs" />
+     <Compile Include="Assets\Scripts\DestroyByTime.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
-     <Compile Include="Assets\VoiceHandler.cs" />
+     <Compile Include="Assets\Scripts\VoiceHandler.cs" />
      <None Include="Assets\FrostweepGames\GCSpeechRecognition\README.txt" />
      <None Include="Assets\FrostweepGames\GCSpeechRecognition\Scripts\Extentions\JsonDotNet\license.txt" />
  <Reference Include="UnityEngine.UI">

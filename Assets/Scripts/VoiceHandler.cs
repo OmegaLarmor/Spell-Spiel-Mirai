@@ -16,9 +16,7 @@ public class VoiceHandler : MonoBehaviour
 
     public Text _speechRecognitionResult; //to update on screen
 
-    private Dictionary<string, GameObject> spellWordPairs = new Dictionary<string, GameObject>();
-
-    public GameObject fireball;
+    public System.Action<string> shareRecognitionEvent;
 
     // Use this for initialization
     void Start()
@@ -38,12 +36,6 @@ public class VoiceHandler : MonoBehaviour
 		_startRecordButton.interactable = true;
         _stopRecordButton.interactable = false;
 
-        spellWordPairs.Add("火玉", fireball);
-
-    }
-
-    public void CastSpell(GameObject spellPrefab){
-        Instantiate(spellPrefab, Vector3.zero, Quaternion.identity);
     }
 
 	private void OnDestroy()
@@ -92,6 +84,8 @@ public class VoiceHandler : MonoBehaviour
             string bestFit = obj.results[0].alternatives[0].transcript;
             _speechRecognitionResult.text = "Word heard: " + bestFit;
 
+            //Loop of death and sorrow. May this be recorded in history, and shared through generations.
+            /* 
             string other = "\nDetected alternative: ";
 
             foreach (var result in obj.results)
@@ -101,9 +95,10 @@ public class VoiceHandler : MonoBehaviour
                     if (obj.results[0].alternatives[0] != alternative)
                         other += alternative.transcript + ", ";
                 }
-            }
-            Debug.Log("Called");
-            CastSpell(spellWordPairs[bestFit]);
+            }*/
+
+            Debug.Log("Called RecognitionSuccessHandler");
+            if (shareRecognitionEvent != null){shareRecognitionEvent(bestFit);}
         }
         else
         {
@@ -111,6 +106,7 @@ public class VoiceHandler : MonoBehaviour
         }
     }
 
+    //Not currently usable, todo?
     private void LongRecognitionSuccessEventHandler(OperationResponse operation, long index)
     {
         if (!_isRuntimeDetectionToggle.isOn)
@@ -122,20 +118,22 @@ public class VoiceHandler : MonoBehaviour
         {
             _speechRecognitionResult.text = "Long Speech Recognition succeeded! Detected Most useful: " + operation.response.results[0].alternatives[0].transcript;
 
+            //Loop of death and sorrow. May this be recorded in history, and shared through generations.
+            /* 
             string other = "\nDetected alternative: ";
 
-            foreach (var result in operation.response.results)
+            foreach (var result in obj.results)
             {
                 foreach (var alternative in result.alternatives)
                 {
-                    if (operation.response.results[0].alternatives[0] != alternative)
+                    if (obj.results[0].alternatives[0] != alternative)
                         other += alternative.transcript + ", ";
                 }
-            }
+            }*/
 
-            _speechRecognitionResult.text += other;
-            _speechRecognitionResult.text += "\nTime for the recognition: " +
-                (operation.metadata.lastUpdateTime - operation.metadata.startTime).TotalSeconds + "s";
+            //_speechRecognitionResult.text += other;
+            //_speechRecognitionResult.text += "\nTime for the recognition: " +
+            //    (operation.metadata.lastUpdateTime - operation.metadata.startTime).TotalSeconds + "s";
         }
         else
         {

@@ -5,7 +5,6 @@ using UnityEngine;
 public class BattleController : MonoBehaviour
 {
 
-    private bool isPlayerTurn = true;
 	private StateMachine stateMachine;
 	public static IState playerTurn = new PlayerTurn();
 	public static IState enemyTurn = new EnemyTurn();
@@ -27,6 +26,9 @@ public class BattleController : MonoBehaviour
 
         spellWordPairs.Add("火玉", fireball);
         spellWordPairs.Add("水玉", waterGun);
+
+        PlayerTurn.startRecordingEvent += StartRecording;
+        PlayerTurn.stopRecordingEvent += StopRecording;
 
 		stateMachine.ChangeState(playerTurn); //Start at player turn by default
     }
@@ -50,6 +52,13 @@ public class BattleController : MonoBehaviour
 		catch (KeyNotFoundException){
 			Debug.Log("Transcript was not in dict");
 		}
+    }
+
+    public void StartRecording(){
+        voice.StartRecording();
+    }
+    public void StopRecording(){
+        voice.StopRecording();
     }
 
 }

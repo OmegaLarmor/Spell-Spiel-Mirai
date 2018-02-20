@@ -10,9 +10,7 @@ public class VoiceHandler : MonoBehaviour
 
     private GCSpeechRecognition _speechRecognition;
 
-    public Toggle _isRuntimeDetectionToggle;
-    public Button _startRecordButton;
-    public Button _stopRecordButton;
+    public bool _isRuntimeDetectionToggle;
 
     public Text _speechRecognitionResult; //to update on screen
 
@@ -33,13 +31,6 @@ public class VoiceHandler : MonoBehaviour
         _speechRecognition.NetworkRequestFailedEvent += SpeechRecognizedFailedEventHandler;
         _speechRecognition.LongRecognitionSuccessEvent += LongRecognitionSuccessEventHandler;
 
-		//Find stuff
-		_startRecordButton.onClick.AddListener(StartRecording);
-        _stopRecordButton.onClick.AddListener(StopRecording);
-
-		_startRecordButton.interactable = true;
-        _stopRecordButton.interactable = false;
-
     }
 
 	private void OnDestroy()
@@ -49,7 +40,7 @@ public class VoiceHandler : MonoBehaviour
 		_speechRecognition.LongRecognitionSuccessEvent -= LongRecognitionSuccessEventHandler;
 	}
 
-	private void StartRecording()
+	public void StartRecording()
         {
             if(isRecording || isWaiting){
                 Debug.Log("Hey! We can't record now!");
@@ -58,15 +49,14 @@ public class VoiceHandler : MonoBehaviour
             isRecording = true;
             isWaiting = false;
 
-            _startRecordButton.interactable = false;
-            _stopRecordButton.interactable = true;
             _speechRecognitionResult.text = "";
-            _speechRecognition.StartRecord(_isRuntimeDetectionToggle.isOn);
+            Debug.Log("recording");
+            _speechRecognition.StartRecord(_isRuntimeDetectionToggle);
 
             StartCoroutine(LimitRecordTime(maxWaitTime));
         }
 
-	private void StopRecording()
+	public void StopRecording()
 	{
 		//ApplySpeechContextPhrases(); Not sure if needed/useful
 
@@ -77,7 +67,6 @@ public class VoiceHandler : MonoBehaviour
         isRecording = false;
         isWaiting = true;
 
-		_stopRecordButton.interactable = false;
 		_speechRecognition.StopRecord();
 	}
 
@@ -85,22 +74,11 @@ public class VoiceHandler : MonoBehaviour
     {
         isWaiting = false;
         _speechRecognitionResult.text = "Speech Recognition failed with error: " + obj;
-
-		if (!_isRuntimeDetectionToggle.isOn)
-		{
-			_startRecordButton.interactable = true;
-			_stopRecordButton.interactable = false;
-		}
     }
 
     private void RecognitionSuccessEventHandler(RecognitionResponse obj, long requestIndex)
     {
         isWaiting = false;
-
-        if (!_isRuntimeDetectionToggle.isOn)
-        {
-            _startRecordButton.interactable = true;
-        }
 
         if (obj != null && obj.results.Length > 0)
         {
@@ -122,10 +100,6 @@ public class VoiceHandler : MonoBehaviour
     //Not currently usable, todo?
     private void LongRecognitionSuccessEventHandler(OperationResponse operation, long index)
     {
-        if (!_isRuntimeDetectionToggle.isOn)
-        {
-            _startRecordButton.interactable = true;
-        }
 
         if (operation != null && operation.response.results.Length > 0)
         {

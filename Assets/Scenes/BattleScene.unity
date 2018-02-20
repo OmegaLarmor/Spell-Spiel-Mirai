@@ -140,9 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a8e7165817017479d4da6e0e8153d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isRuntimeDetectionToggle: {fileID: 1447690931}
-  _startRecordButton: {fileID: 459731699}
-  _stopRecordButton: {fileID: 1599850088}
+  _isRuntimeDetectionToggle: 0
   _speechRecognitionResult: {fileID: 1255010704}
   isRecording: 0
   isWaiting: 0
@@ -400,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &459731698
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1226,7 +1224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1447690930
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1451,7 +1449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1599850087
 RectTransform:
   m_ObjectHideFlags: 0

@@ -50,7 +50,6 @@ public class VoiceHandler : MonoBehaviour
             isWaiting = false;
 
             _speechRecognitionResult.text = "";
-            Debug.Log("recording");
             _speechRecognition.StartRecord(_isRuntimeDetectionToggle);
 
             StartCoroutine(LimitRecordTime(maxWaitTime));

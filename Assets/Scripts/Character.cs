@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
-	public float maxHP;
-	public float currentHP;
+	public FloatReference maxHP;
+	public FloatReference currentHP;
+	private System.Action<int,int> TookDamageEvent;
 
 
 	//public List<Spell> spellList;
@@ -18,5 +19,10 @@ public class Character : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void TakeDamage(float dmg){
+		//currentHP.variable -= dmg;
+		//TookDamageEvent(currentHP,maxHP);
 	}
 }

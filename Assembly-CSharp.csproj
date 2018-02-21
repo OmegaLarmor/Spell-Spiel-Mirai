@@ -77,6 +77,10 @@
      <Compile Include="Assets\Scripts\DestroyByTime.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyTurn.cs" />
+     <Compile Include="Assets\Scripts\FloatReference.cs" />
+     <Compile Include="Assets\Scripts\FloatVariable.cs" />
+     <Compile Include="Assets\Scripts\ImageFillSetter.cs" />
+     <Compile Include="Assets\Scripts\ImageScaleSetter.cs" />
      <Compile Include="Assets\Scripts\IState.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
      <Compile Include="Assets\Scripts\PlayerTurn.cs" />

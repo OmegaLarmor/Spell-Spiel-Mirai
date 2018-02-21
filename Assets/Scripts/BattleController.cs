@@ -5,6 +5,8 @@ using UnityEngine;
 public class BattleController : MonoBehaviour
 {
 
+    public static BattleController instance = null;
+
 	private StateMachine stateMachine;
 	public static IState playerTurn = new PlayerTurn();
 	public static IState enemyTurn = new EnemyTurn();
@@ -15,14 +17,21 @@ public class BattleController : MonoBehaviour
     public GameObject fireball;
     public GameObject waterGun;
 
+    void Awake(){
+
+        //Join the dark side
+        if (instance == null){
+            instance = this;
+        }
+        else if (instance != this){
+            Destroy(this);
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
 		stateMachine = GetComponent<StateMachine>();
-        if (voice != null)
-        {
-            voice.shareRecognitionEvent += CastSpell;
-        }
 
         spellWordPairs.Add("火玉", fireball);
         spellWordPairs.Add("水玉", waterGun);

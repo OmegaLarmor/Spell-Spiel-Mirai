@@ -18,6 +18,7 @@ public class StateMachine : MonoBehaviour
         }
         previousState = currentState;
         currentState = newState;
+        currentState.Enter();
     }
 
     public void ExecuteStateUpdate()

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 82199536893013006}
   - component: {fileID: 114804013772102898}
   - component: {fileID: 114209485626871484}
+  - component: {fileID: 114179935872528588}
   m_Layer: 0
   m_Name: WaterGun
   m_TagString: Untagged
@@ -162,6 +163,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114179935872528588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1416620681899884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950021bc2c37d1a40a3c5aca4ed68801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 1
 --- !u!114 &114209485626871484
 MonoBehaviour:
   m_ObjectHideFlags: 1

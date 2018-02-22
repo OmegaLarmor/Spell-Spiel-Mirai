@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class FloatReference {
 
-	public bool useConstant = true;
+	public bool useConstant = false;
 	public float constantValue;
 	public FloatVariable variable;
 

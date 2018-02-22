@@ -7,15 +7,18 @@ public class BattleController : MonoBehaviour
 
     public static BattleController instance = null;
 
+    public Character player;
+    public Character enemy;
+
 	private StateMachine stateMachine;
 	public static IState playerTurn = new PlayerTurn();
 	public static IState enemyTurn = new EnemyTurn();
 
     public VoiceHandler voice;
-    private Dictionary<string, GameObject> spellWordPairs = new Dictionary<string, GameObject>();
+    private Dictionary<string, Spell> spellWordPairs = new Dictionary<string, Spell>();
 
-    public GameObject fireball;
-    public GameObject waterGun;
+    public Spell fireball;
+    public Spell waterGun;
 
     void Awake(){
 
@@ -28,7 +31,6 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    // Use this for initialization
     void Start()
     {
 		stateMachine = GetComponent<StateMachine>();
@@ -42,7 +44,6 @@ public class BattleController : MonoBehaviour
 		stateMachine.ChangeState(playerTurn); //Start at player turn by default
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -55,7 +56,9 @@ public class BattleController : MonoBehaviour
         Debug.Log("Spell cast: " + transcript);
         try
         {
-            Instantiate(spellWordPairs[transcript]);
+            Spell theSpell = spellWordPairs[transcript];
+            Instantiate(theSpell);
+            enemy.HandleSpell(theSpell, player);
         }
 
 		catch (KeyNotFoundException){

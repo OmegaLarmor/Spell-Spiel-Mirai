@@ -83,7 +83,9 @@
      <Compile Include="Assets\Scripts\ImageScaleSetter.cs" />
      <Compile Include="Assets\Scripts\IState.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerTurn.cs" />
+     <Compile Include="Assets\Scripts\Spell.cs" />
      <Compile Include="Assets\Scripts\StateMachine.cs" />
      <Compile Include="Assets\Scripts\VoiceHandler.cs" />
      <None Include="Assets\FrostweepGames\GCSpeechRecognition\README.txt" />

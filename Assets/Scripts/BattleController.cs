@@ -33,7 +33,7 @@ public class BattleController : MonoBehaviour
 
     void Start()
     {
-		stateMachine = GetComponent<StateMachine>();
+        stateMachine = GetComponent<StateMachine>();
 
         spellWordPairs.Add("火玉", fireball);
         spellWordPairs.Add("水玉", waterGun);
@@ -42,13 +42,25 @@ public class BattleController : MonoBehaviour
         PlayerTurn.stopRecordingEvent += StopRecording;
 
 		stateMachine.ChangeState(playerTurn); //Start at player turn by default
+        InitializeBattleVars();
     }
 
     void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.Alpha1)){
+            CastSpell("火玉");
+        }
+
         stateMachine.ExecuteStateUpdate();
 
+    }
+
+    public void StartRecording(){
+        voice.StartRecording();
+    }
+    public void StopRecording(){
+        voice.StopRecording();
     }
 
 ///////////////////////////////////////////////////////
@@ -70,11 +82,12 @@ public class BattleController : MonoBehaviour
 		}
     }
 
-    public void StartRecording(){
-        voice.StartRecording();
-    }
-    public void StopRecording(){
-        voice.StopRecording();
+    //Resets the Scriptable objects to their required value
+    public void InitializeBattleVars(){
+
+        player.currentHP.variable.value = player.maxHP.value;
+        enemy.currentHP.variable.value = enemy.maxHP.value;
+
     }
 
 }

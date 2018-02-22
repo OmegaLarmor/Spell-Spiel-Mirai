@@ -17,6 +17,8 @@ public class PlayerTurn : IState
     public void Enter()
     {
         BattleController.instance.voice.shareRecognitionEvent += BattleController.instance.CastSpell;
+        BattleController.instance.enemy.Die += EndBattleWin;
+
     }
 
     public IState Execute()
@@ -44,8 +46,13 @@ public class PlayerTurn : IState
     {
         Debug.Log("Player turn ended");
         BattleController.instance.voice.shareRecognitionEvent -= BattleController.instance.CastSpell;
+        BattleController.instance.enemy.Die -= EndBattleWin;
     }
 
 //////////////////////////////////////////////////////////////////////
+
+    private void EndBattleWin(){
+        Debug.Log("We won!");
+    }
 
 }

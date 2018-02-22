@@ -88,8 +88,10 @@
      <Compile Include="Assets\Scripts\Spell.cs" />
      <Compile Include="Assets\Scripts\StateMachine.cs" />
      <Compile Include="Assets\Scripts\VoiceHandler.cs" />
+     <None Include="Assets\Fonts\M-NijimiMincho\LICENSE_OFL.txt" />
      <None Include="Assets\FrostweepGames\GCSpeechRecognition\README.txt" />
      <None Include="Assets\FrostweepGames\GCSpeechRecognition\Scripts\Extentions\JsonDotNet\license.txt" />
+     <None Include="Assets\Fonts\M-NijimiMincho\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity_2017.3.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

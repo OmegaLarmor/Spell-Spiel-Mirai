@@ -27,7 +27,6 @@ public class Spell : MonoBehaviour
         if (GetComponent<DestroyByTime>() != null)
         {
             duration = GetComponent<DestroyByTime>().lifetime;
-			Debug.Log(duration);
         }
         else
 		{

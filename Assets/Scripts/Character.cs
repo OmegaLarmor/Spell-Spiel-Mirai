@@ -9,7 +9,7 @@ public class Character : MonoBehaviour {
 	public FloatReference attack;
 	public FloatReference defense;
 
-	private System.Action<int,int> TookDamageEvent;
+	public System.Action Die;
 
 
 	// Use this for initialization
@@ -19,7 +19,7 @@ public class Character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	public void HandleSpell(Spell spell, Character caster) {
@@ -29,16 +29,27 @@ public class Character : MonoBehaviour {
 		float toDeal = spell.baseDamage + attackBoost - defenseBoost;
 		if (toDeal < 0) toDeal = 0;
 		StartCoroutine (DamageAfterSeconds(toDeal, spell.getDuration()));
-
 	}
 
+	// At this point, all calculations are done
 	public void TakeDamage(float dmg){
 		currentHP.variable.value -= dmg;
+		if (currentHP.value < 0){
+			currentHP.variable.value = 0; //minimum is zero
+		}
 	}
 
 	IEnumerator DamageAfterSeconds(float dmg, float secs){
 		yield return new WaitForSeconds(secs);
 		TakeDamage(dmg);
+		CheckIfDead();
 		yield break;
-	} 
+	}
+
+	public void CheckIfDead(){
+		//Reminder: Action != null checks if there are listeners
+		if (currentHP.value <= 0 && Die != null){
+			Die();
+		}
+	}
 }

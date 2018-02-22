@@ -28,11 +28,17 @@ public class Character : MonoBehaviour {
 		float defenseBoost = caster.defense.value;
 		float toDeal = spell.baseDamage + attackBoost - defenseBoost;
 		if (toDeal < 0) toDeal = 0;
-		TakeDamage(toDeal);
+		StartCoroutine (DamageAfterSeconds(toDeal, spell.getDuration()));
 
 	}
 
 	public void TakeDamage(float dmg){
 		currentHP.variable.value -= dmg;
 	}
+
+	IEnumerator DamageAfterSeconds(float dmg, float secs){
+		yield return new WaitForSeconds(secs);
+		TakeDamage(dmg);
+		yield break;
+	} 
 }

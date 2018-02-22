@@ -16,7 +16,6 @@ public class PlayerTurn : IState
 
     public void Enter()
     {
-        Debug.Log("entered");
         BattleController.instance.voice.shareRecognitionEvent += BattleController.instance.CastSpell;
     }
 
@@ -29,13 +28,11 @@ public class PlayerTurn : IState
         if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.LeftShift)){
 
             if (startRecordingEvent != null) startRecordingEvent();
-            Debug.Log("Recording");
 
         }
         else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift)){
 
             if (stopRecordingEvent != null) stopRecordingEvent();
-            Debug.Log("Released");
 
         }
        

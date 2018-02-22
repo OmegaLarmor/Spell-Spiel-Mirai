@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d6c68065537bc4b8b98fc78c1b138f, type: 3}
   m_Name: EnemyDefense
   m_EditorClassIdentifier: 
-  value: 69.5
+  value: 0

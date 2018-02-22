@@ -51,12 +51,16 @@ public class BattleController : MonoBehaviour
 
     }
 
+///////////////////////////////////////////////////////
+
     public void CastSpell(string transcript)
     {
         Debug.Log("Spell cast: " + transcript);
         try
         {
             Spell theSpell = spellWordPairs[transcript];
+
+            //todo: limit to a single instance to prevent blasting when error
             Instantiate(theSpell);
             enemy.HandleSpell(theSpell, player);
         }

@@ -5,9 +5,12 @@ using UnityEngine;
 public class EnemyTurn : IState
 {
 
+    private StateMachine machine;
+
     public void Enter()
     {
         Debug.Log("Enemy turn start!");
+        BattleController.instance.player.animator.SetBool("Casting", false);
     }
 
     public IState Execute()
@@ -22,5 +25,13 @@ public class EnemyTurn : IState
     public void Exit()
     {
         Debug.Log("Enemy turn ended");
+    }
+
+    public void ChangeTurn(){
+        machine.ChangeState(new PlayerTurn());
+    }
+
+    public void SetParentMachine(StateMachine machine){
+        this.machine = machine;
     }
 }

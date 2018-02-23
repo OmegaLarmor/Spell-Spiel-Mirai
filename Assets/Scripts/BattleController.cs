@@ -67,6 +67,10 @@ public class BattleController : MonoBehaviour
 
     public void CastSpell(string transcript)
     {
+        if (transcript == "Failed"){
+            Debug.Log("Voice recognition failed. Ignoring cast...");
+            return;
+        }
         Debug.Log("Spell cast: " + transcript);
         try
         {
@@ -75,11 +79,18 @@ public class BattleController : MonoBehaviour
             //todo: limit to a single instance to prevent blasting when error
             Instantiate(theSpell);
             enemy.HandleSpell(theSpell, player);
+            StartCoroutine(WaitForSpellEndAndChangeTurn(theSpell));
         }
 
 		catch (KeyNotFoundException){
 			Debug.Log("Transcript was not in dict");
 		}
+    }
+
+    IEnumerator WaitForSpellEndAndChangeTurn(Spell spell){
+		yield return new WaitForSeconds(spell.getDuration());
+		stateMachine.currentState.ChangeTurn();
+		yield break;
     }
 
     //Resets the Scriptable objects to their required value

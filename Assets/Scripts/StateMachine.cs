@@ -5,8 +5,8 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
 
-    private IState currentState;
-    private IState previousState;
+    public IState currentState;
+    public IState previousState;
 
 
     public void ChangeState(IState newState)
@@ -18,6 +18,7 @@ public class StateMachine : MonoBehaviour
         }
         previousState = currentState;
         currentState = newState;
+        currentState.SetParentMachine(this);
         currentState.Enter();
     }
 

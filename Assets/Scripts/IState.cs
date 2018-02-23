@@ -7,5 +7,7 @@ public interface IState {
 	void Enter();
 	IState Execute(); //ie Update
 	void Exit();
+	void ChangeTurn();
+	void SetParentMachine(StateMachine machine);
 
 }

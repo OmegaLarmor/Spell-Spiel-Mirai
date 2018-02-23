@@ -8,15 +8,15 @@ public class PlayerTurn : IState
     public static System.Action startRecordingEvent;
     public static System.Action stopRecordingEvent;
 
-    //private Dictionary<string, GameObject> spellWordPairs = new Dictionary<string, GameObject>();
-    //public GameObject fireball;
-    //public GameObject waterGun;
+
+    private StateMachine machine;
 
 
 
     public void Enter()
     {
         BattleController.instance.voice.shareRecognitionEvent += BattleController.instance.CastSpell;
+        //BattleController.instance.voice.shareRecognitionEvent += IfSuccessYieldTurn;
         BattleController.instance.enemy.Die += EndBattleWin;
 
     }
@@ -30,11 +30,13 @@ public class PlayerTurn : IState
         if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.LeftShift)){
 
             if (startRecordingEvent != null) startRecordingEvent();
+            BattleController.instance.player.animator.SetBool("Casting",true); //Gets 
 
         }
         else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift)){
 
             if (stopRecordingEvent != null) stopRecordingEvent();
+            //BattleController.instance.player.animator.SetBool("Casting",false);
 
         }
        
@@ -47,6 +49,14 @@ public class PlayerTurn : IState
         Debug.Log("Player turn ended");
         BattleController.instance.voice.shareRecognitionEvent -= BattleController.instance.CastSpell;
         BattleController.instance.enemy.Die -= EndBattleWin;
+    }
+
+    public void ChangeTurn(){
+        machine.ChangeState(new EnemyTurn());
+    }
+
+    public void SetParentMachine(StateMachine machine){
+        this.machine = machine;
     }
 
 //////////////////////////////////////////////////////////////////////

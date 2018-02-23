@@ -73,6 +73,9 @@ public class VoiceHandler : MonoBehaviour
     {
         isWaiting = false;
         _speechRecognitionResult.text = "Speech Recognition failed with error: " + obj;
+        if (shareRecognitionEvent != null){
+            shareRecognitionEvent("Failed");
+        }
     }
 
     private void RecognitionSuccessEventHandler(RecognitionResponse obj, long requestIndex)

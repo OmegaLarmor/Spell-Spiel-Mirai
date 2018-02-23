@@ -22,6 +22,9 @@ public class Character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.D)){
+			animator.SetBool("Dead", true);
+		}
 
 	}
 
@@ -53,6 +56,7 @@ public class Character : MonoBehaviour {
 		//Reminder: Action != null checks if there are listeners
 		if (currentHP.value <= 0 && Die != null){
 			Die();
+			animator.SetBool("Dead", true);
 		}
 	}
 }

@@ -264,9 +264,9 @@ RectTransform:
   m_Father: {fileID: 1162828623}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -129.4, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -64.399994, y: 0}
   m_SizeDelta: {x: 129.4, y: 129.4}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &93910319
@@ -619,8 +619,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 342.37, y: 0}
-  m_SizeDelta: {x: 129.40002, y: 129.4}
+  m_AnchoredPosition: {x: 367.49, y: -8.263533}
+  m_SizeDelta: {x: 142.69, y: 195.5}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &510295304
 MonoBehaviour:
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3897059, g: 0.34099266, b: 0.35207915, a: 1}
+  m_Color: {r: 0.9338235, g: 0.14419337, b: 0.45459944, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1183,7 +1183,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -110, y: -5}
-  m_SizeDelta: {x: 129.4, y: 129.4}
+  m_SizeDelta: {x: 142.69, y: 195}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1162828624
 MonoBehaviour:
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3897059, g: 0.34099266, b: 0.35207915, a: 1}
+  m_Color: {r: 0.93333334, g: 0.14509805, b: 0.45490196, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1445,9 +1445,9 @@ RectTransform:
   m_Father: {fileID: 510295303}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -129.4, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -64.399994, y: 0}
   m_SizeDelta: {x: 129.4, y: 129.4}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1553586727

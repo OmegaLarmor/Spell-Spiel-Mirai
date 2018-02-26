@@ -71,7 +71,7 @@ public class BattleController : MonoBehaviour
             Debug.Log("Voice recognition failed. Ignoring cast...");
             return;
         }
-        Debug.Log("Spell cast: " + transcript);
+        /* 
         try
         {
             Spell theSpell = spellWordPairs[transcript];
@@ -84,7 +84,27 @@ public class BattleController : MonoBehaviour
 
 		catch (KeyNotFoundException){
 			Debug.Log("Transcript was not in dict");
-		}
+		}*/
+         
+        Spell theSpell = null;
+        
+        for (int i = 0; i < player.spells.Length; i++){
+            theSpell = player.spells[i].CheckInWords(transcript);
+            if (theSpell != null) break;
+        }
+
+        if (theSpell == null){
+            Debug.Log("I got nothing...");
+            return;
+        }
+
+        //we did it! We said a valid spell! Now, we cast it.
+        else{
+            Instantiate(theSpell);
+            enemy.HandleSpell(theSpell, player);
+            StartCoroutine(WaitForSpellEndAndChangeTurn(theSpell));
+            Debug.Log("Spell cast: " + transcript);
+        }
     }
 
     IEnumerator WaitForSpellEndAndChangeTurn(Spell spell){

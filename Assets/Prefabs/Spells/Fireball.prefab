@@ -188,6 +188,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
+  wordsAllowed:
+  - "\u706B\u7389"
+  - "\u706B\u68DA"
+  - "\u98DB\u9A28"
+  - "\u5E72\u9C48"
 --- !u!114 &114738860112246296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,7 +237,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 313399213
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 497dcc3e35bff53459904d7503a49037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -13,6 +13,8 @@ public class Character : MonoBehaviour {
 
 	public Animator animator;
 
+	public Spell[] spells;
+
 	// Use this for initialization
 	void Start () {
 

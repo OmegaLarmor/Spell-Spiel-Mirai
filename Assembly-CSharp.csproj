@@ -73,8 +73,10 @@
      <Compile Include="Assets\FrostweepGames\GCSpeechRecognition\Scripts\Core\Utilites\ServiceLocator.cs" />
      <Compile Include="Assets\FrostweepGames\GCSpeechRecognition\Scripts\GCSpeechRecognition.cs" />
      <Compile Include="Assets\Scripts\BattleController.cs" />
+     <Compile Include="Assets\Scripts\BooleanVariable.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\DestroyByTime.cs" />
+     <Compile Include="Assets\Scripts\DisaBool.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyTurn.cs" />
      <Compile Include="Assets\Scripts\FloatReference.cs" />

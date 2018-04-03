@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class BattleController : MonoBehaviour
@@ -16,6 +17,7 @@ public class BattleController : MonoBehaviour
 
     public VoiceHandler voice;
     private Dictionary<string, Spell> spellWordPairs = new Dictionary<string, Spell>();
+    public Text battleText;
 
     public Spell fireball;
     public Spell waterGun;
@@ -104,6 +106,7 @@ public class BattleController : MonoBehaviour
             enemy.HandleSpell(theSpell, player);
             StartCoroutine(WaitForSpellEndAndChangeTurn(theSpell));
             Debug.Log("Spell cast: " + transcript);
+            battleText.text = transcript + "をつかった！";
         }
     }
 

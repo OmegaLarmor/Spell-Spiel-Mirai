@@ -85,7 +85,7 @@ public class VoiceHandler : MonoBehaviour
         if (obj != null && obj.results.Length > 0)
         {
             string bestFit = obj.results[0].alternatives[0].transcript;
-            _speechRecognitionResult.text = "Word heard: " + bestFit;
+            //_speechRecognitionResult.text = "Word heard: " + bestFit;
 
             Debug.Log("Called RecognitionSuccessHandler");
 

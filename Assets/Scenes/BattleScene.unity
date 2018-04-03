@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.72794116, g: 0.72794116, b: 0.72794116, a: 1}
+  m_Color: {r: 0.8041739, g: 0.9028532, b: 0.9852941, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.49472612, b: 0.2205882, a: 1}
+  m_Color: {r: 1, g: 0.558215, b: 0.27205884, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9139961, b: 0.2205882, a: 1}
+  m_Color: {r: 1, g: 0.9261665, b: 0.33088237, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2205882, g: 0.58073026, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.7310345, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1090,6 +1090,7 @@ MonoBehaviour:
   player: {fileID: 847607775}
   enemy: {fileID: 186286311}
   voice: {fileID: 8994410}
+  battleText: {fileID: 1255010704}
   fireball: {fileID: 114466387444990242, guid: 2bc17c54d9a2c4a43ac7aba3b27a656b, type: 2}
   waterGun: {fileID: 114179935872528588, guid: d0fdacc14f8bd174aafc4ccced538532, type: 2}
 --- !u!114 &479747637
@@ -1995,7 +1996,7 @@ GameObject:
   - component: {fileID: 1255010705}
   - component: {fileID: 1255010704}
   m_Layer: 5
-  m_Name: ResultText
+  m_Name: BattleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2051,7 +2052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Word heard:'
+  m_Text: "\u4F7F\u3063\u305F\u6280\u306E\u30C6\u30AF\u30B9\u30C8"
 --- !u!222 &1255010705
 CanvasRenderer:
   m_ObjectHideFlags: 0

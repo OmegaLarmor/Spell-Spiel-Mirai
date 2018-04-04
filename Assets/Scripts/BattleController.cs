@@ -97,6 +97,7 @@ public class BattleController : MonoBehaviour
 
         if (theSpell == null){
             Debug.Log("I got nothing...");
+            battleText.text = "なにもおこらなかった．．．";
             return;
         }
 

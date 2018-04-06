@@ -11,13 +11,16 @@ public class PlayerTurn : IState
 
     private StateMachine machine;
 
+    public BooleanVariable boolVar; //tells others if it is playerTurn or not
+
 
 
     public void Enter()
     {
-        BattleController.instance.voice.shareRecognitionEvent += BattleController.instance.CastSpell;
+        BattleController.instance.voice.shareRecognitionEvent += BattleController.instance.TrySpellString;
         //BattleController.instance.voice.shareRecognitionEvent += IfSuccessYieldTurn;
         BattleController.instance.enemy.Die += EndBattleWin;
+        boolVar = BattleController.instance.isPlayerTurn;
 
     }
 
@@ -30,7 +33,7 @@ public class PlayerTurn : IState
         if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.LeftShift)){
 
             if (startRecordingEvent != null) startRecordingEvent();
-            BattleController.instance.player.animator.SetBool("Casting",true); //Gets 
+            BattleController.instance.player.animator.SetBool("Casting",true);
 
         }
         else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift)){
@@ -47,12 +50,14 @@ public class PlayerTurn : IState
     public void Exit()
     {
         Debug.Log("Player turn ended");
-        BattleController.instance.voice.shareRecognitionEvent -= BattleController.instance.CastSpell;
+        BattleController.instance.voice.shareRecognitionEvent -= BattleController.instance.TrySpellString;
         BattleController.instance.enemy.Die -= EndBattleWin;
     }
 
     public void ChangeTurn(){
         machine.ChangeState(new EnemyTurn());
+        boolVar.value = false; //toggles UI with outside bool object
+
     }
 
     public void SetParentMachine(StateMachine machine){

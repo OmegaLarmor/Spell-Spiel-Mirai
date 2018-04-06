@@ -14,6 +14,7 @@ public class BattleController : MonoBehaviour
 	private StateMachine stateMachine;
 	public static IState playerTurn = new PlayerTurn();
 	public static IState enemyTurn = new EnemyTurn();
+    public BooleanVariable isPlayerTurn; //kinda hacky, but very useful to toggle UI
 
     public VoiceHandler voice;
     private Dictionary<string, Spell> spellWordPairs = new Dictionary<string, Spell>();
@@ -51,7 +52,7 @@ public class BattleController : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.Alpha1)){
-            CastSpell("火玉");
+            TrySpellString("火玉");
         }
 
         stateMachine.ExecuteStateUpdate();
@@ -67,26 +68,12 @@ public class BattleController : MonoBehaviour
 
 ///////////////////////////////////////////////////////
 
-    public void CastSpell(string transcript)
+    public void TrySpellString(string transcript)
     {
         if (transcript == "Failed"){
             Debug.Log("Voice recognition failed. Ignoring cast...");
             return;
         }
-        /* 
-        try
-        {
-            Spell theSpell = spellWordPairs[transcript];
-
-            //todo: limit to a single instance to prevent blasting when error
-            Instantiate(theSpell);
-            enemy.HandleSpell(theSpell, player);
-            StartCoroutine(WaitForSpellEndAndChangeTurn(theSpell));
-        }
-
-		catch (KeyNotFoundException){
-			Debug.Log("Transcript was not in dict");
-		}*/
          
         Spell theSpell = null;
         
@@ -103,12 +90,16 @@ public class BattleController : MonoBehaviour
 
         //we did it! We said a valid spell! Now, we cast it.
         else{
-            Instantiate(theSpell);
-            enemy.HandleSpell(theSpell, player);
-            StartCoroutine(WaitForSpellEndAndChangeTurn(theSpell));
-            Debug.Log("Spell cast: " + transcript);
-            battleText.text = transcript + "をつかった！";
+            CastSpell(theSpell, player, enemy); //cast x from a to b
         }
+    }
+
+    public void CastSpell(Spell spell, Character caster, Character target)
+    {
+        Instantiate(spell);
+        enemy.HandleSpell(spell, player);
+        StartCoroutine(WaitForSpellEndAndChangeTurn(spell));
+        battleText.text = caster.name + "は" + spell.trueName + "をつかった！";
     }
 
     IEnumerator WaitForSpellEndAndChangeTurn(Spell spell){
@@ -122,6 +113,7 @@ public class BattleController : MonoBehaviour
 
         player.currentHP.variable.value = player.maxHP.value;
         enemy.currentHP.variable.value = enemy.maxHP.value;
+        isPlayerTurn.value = true;
 
     }
 

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
 
+    public string trueName; //will stay public for simplicity 
+
     public float baseDamage = 1;
 
     private Animator animator;

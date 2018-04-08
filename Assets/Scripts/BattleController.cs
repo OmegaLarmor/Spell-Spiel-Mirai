@@ -83,7 +83,7 @@ public class BattleController : MonoBehaviour
         }
 
         if (theSpell == null){
-            Debug.Log("I got nothing...");
+            Debug.Log("I got nothing... Might wanna add " + transcript + "!");
             battleText.text = "なにもおこらなかった．．．";
             return;
         }

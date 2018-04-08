@@ -5540,8 +5540,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 518.2, y: -74}
-  m_SizeDelta: {x: 973.4, y: 112.6}
+  m_AnchoredPosition: {x: 512, y: -111}
+  m_SizeDelta: {x: 973.4, y: 203.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255010704
 MonoBehaviour:
@@ -5575,7 +5575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F7F\u3063\u305F\u6280\u306E\u30C6\u30AF\u30B9\u30C8"
+  m_Text: "Beam\u306E\u756A\u3067\u3059\uFF01\u3088\u304F\u8A00\u3063\u3066\u306D\uFF01"
 --- !u!222 &1255010705
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5612,7 +5612,7 @@ RectTransform:
   m_Children:
   - {fileID: 758844923}
   m_Father: {fileID: 1881899839}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6033,16 +6033,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1553604548}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.65, z: 1}
   m_Children: []
-  m_Father: {fileID: 1868603748}
-  m_RootOrder: 4
+  m_Father: {fileID: 1881899839}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 410.4, y: 274.3}
+  m_AnchoredPosition: {x: 304.29, y: 158.21497}
   m_SizeDelta: {x: 213.13, y: 150.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553604552
@@ -6056,10 +6056,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4e65d041cc8e544af80348f36327fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitBeforeStart: 2
-  waitBetweenFlickers: 1
+  waitBeforeStart: 10
+  waitBetweenFlickers: 2.5
   flickerNumber: 6
   loop: 1
+  startHidden: 1
 --- !u!1 &1715285351
 GameObject:
   m_ObjectHideFlags: 0
@@ -9702,7 +9703,6 @@ Transform:
   - {fileID: 252994463}
   - {fileID: 137556068}
   - {fileID: 64868425}
-  - {fileID: 1553604551}
   m_Father: {fileID: 1136928643}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9866,6 +9866,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1255010703}
+  - {fileID: 1553604551}
   - {fileID: 1276316720}
   m_Father: {fileID: 512126580}
   m_RootOrder: 0

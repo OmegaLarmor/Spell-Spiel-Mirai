@@ -178,6 +178,7 @@ MonoBehaviour:
   baseDamage: 15
   wordsAllowed:
   - "\u6C34\u7389"
+  - "\u6C34\u7530"
 --- !u!114 &114209485626871484
 MonoBehaviour:
   m_ObjectHideFlags: 1

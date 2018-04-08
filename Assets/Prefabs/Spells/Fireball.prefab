@@ -194,6 +194,9 @@ MonoBehaviour:
   - "\u706B\u68DA"
   - "\u98DB\u9A28"
   - "\u5E72\u9C48"
+  - "\u30B7\u30CD\u30DE"
+  - "\u3057\u3060\u307E"
+  - "\u3061\u3060\u307E"
 --- !u!114 &114738860112246296
 MonoBehaviour:
   m_ObjectHideFlags: 1

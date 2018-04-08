@@ -12,6 +12,7 @@ public class Flicker : MonoBehaviour {
 	public int flickerNumber;
 
 	public bool loop;
+	public bool startHidden;
 
 	private Image image;
 
@@ -20,7 +21,25 @@ public class Flicker : MonoBehaviour {
 
 		image = GetComponent<Image>();
 		StartCoroutine(StartFlicker());
+
+		if (startHidden) {
+			image.enabled = false;
+		}
 		
+	}
+
+	void OnEnable() {
+
+		Debug.Log("Enabled");
+		StartCoroutine(StartFlicker());
+
+	}
+
+	void OnDisable() {
+
+		Debug.Log("Disabled");
+		StopCoroutine(StartFlicker());
+
 	}
 	
 	// Update is called once per frame
@@ -36,7 +55,6 @@ public class Flicker : MonoBehaviour {
         bool Switch = false;
         for (int i = 0; i < flickerNumber; i++)
         {
-			Debug.Log("Loop");
             if (Switch == true)
             {
 				image.enabled = false;

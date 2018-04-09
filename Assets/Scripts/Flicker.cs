@@ -30,14 +30,12 @@ public class Flicker : MonoBehaviour {
 
 	void OnEnable() {
 
-		Debug.Log("Enabled");
 		StartCoroutine(StartFlicker());
 
 	}
 
 	void OnDisable() {
 
-		Debug.Log("Disabled");
 		StopCoroutine(StartFlicker());
 
 	}
@@ -49,7 +47,6 @@ public class Flicker : MonoBehaviour {
 
 	IEnumerator StartFlicker ()
     {
-		Debug.Log("Start Flicker");
 		yield return new WaitForSeconds(waitBeforeStart);
 
         bool Switch = false;

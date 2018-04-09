@@ -176,6 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trueName: "\u6C34\u7389"
   baseDamage: 15
+  mustFlip: 1
+  selfCast: 0
+  spawnAtUser: 1
   wordsAllowed:
   - "\u6C34\u7389"
   - "\u6C34\u7530"

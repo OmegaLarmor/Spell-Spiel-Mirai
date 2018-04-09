@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
-
+	
 	public FloatReference maxHP;
 	public FloatReference currentHP;
 	public FloatReference attack;
@@ -13,7 +13,7 @@ public class Character : MonoBehaviour {
 
 	public Animator animator;
 
-	public Spell[] spells;
+	public Spell[] spells; //public for simplicity
 
 	// Use this for initialization
 	void Start () {

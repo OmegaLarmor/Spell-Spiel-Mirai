@@ -96,10 +96,23 @@ public class BattleController : MonoBehaviour
 
     public void CastSpell(Spell spell, Character caster, Character target)
     {
-        Instantiate(spell);
-        enemy.HandleSpell(spell, player);
+        //Handle the instantiation
+        float spawnX = spell.spawnAtUser ? caster.transform.position.x : target.transform.position.x;
+        float spawnY = spell.spawnAtUser ? caster.transform.position.y : target.transform.position.y;
+        float spawnFlip = spell.mustFlip && !(isPlayerTurn.value) ? 180 : 0;
+        Instantiate(spell, new Vector3(spawnX,spawnY,0), Quaternion.Euler(0,0,spawnFlip));
+
+        target.HandleSpell(spell, caster);
         StartCoroutine(WaitForSpellEndAndChangeTurn(spell));
         battleText.text = caster.name + "は" + spell.trueName + "をつかった！";
+    }
+
+    ////////////       Only used by Enemy!       /////////////////
+    public IEnumerator CastAfterSeconds(float secs, Spell spell){
+
+        yield return new WaitForSeconds(secs);
+        CastSpell(spell, enemy, player);
+        yield break;
     }
 
     IEnumerator WaitForSpellEndAndChangeTurn(Spell spell){

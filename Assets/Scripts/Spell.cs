@@ -12,6 +12,10 @@ public class Spell : MonoBehaviour
     private Animator animator;
     private float duration; //to deal damage after animation
 
+    public bool mustFlip; //if we have to flip when the enemy casts it
+    public bool selfCast; //has to do with the effect (prob won't be used)
+    public bool spawnAtUser;
+
     public string[] wordsAllowed;
 
     // Use this for initialization

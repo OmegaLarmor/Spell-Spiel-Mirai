@@ -72,7 +72,7 @@ public class VoiceHandler : MonoBehaviour
     private void SpeechRecognizedFailedEventHandler(string obj, long requestIndex)
     {
         isWaiting = false;
-        _speechRecognitionResult.text = "Speech Recognition failed with error: " + obj;
+        //_speechRecognitionResult.text = "Speech Recognition failed with error: " + obj;
         if (shareRecognitionEvent != null){
             shareRecognitionEvent("Failed");
         }
@@ -95,7 +95,7 @@ public class VoiceHandler : MonoBehaviour
         }
         else
         {
-            _speechRecognitionResult.text = "Speech Recognition succeeded! But no words recognised... :( ";
+           // _speechRecognitionResult.text = "Speech Recognition succeeded! But no words recognised... :( ";
         }
     }
 

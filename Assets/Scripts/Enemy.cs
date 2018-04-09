@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : Character {
 
-	public bool isenemy;
 	// Use this for initialization
 	void Start () {
 		

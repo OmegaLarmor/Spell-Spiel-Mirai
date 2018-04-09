@@ -22,6 +22,8 @@ public class PlayerTurn : IState
         BattleController.instance.enemy.Die += EndBattleWin;
         boolVar = BattleController.instance.isPlayerTurn;
 
+        BattleController.instance.battleText.text = BattleController.instance.player.name + "の番です！よく言ってね！";
+
     }
 
     public IState Execute()
@@ -49,7 +51,7 @@ public class PlayerTurn : IState
 
     public void Exit()
     {
-        Debug.Log("Player turn ended");
+        //Debug.Log("Player turn ended");
         BattleController.instance.voice.shareRecognitionEvent -= BattleController.instance.TrySpellString;
         BattleController.instance.enemy.Die -= EndBattleWin;
     }

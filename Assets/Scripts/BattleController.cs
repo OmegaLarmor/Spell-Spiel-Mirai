@@ -103,20 +103,19 @@ public class BattleController : MonoBehaviour
         Instantiate(spell, new Vector3(spawnX,spawnY,0), Quaternion.Euler(0,0,spawnFlip));
 
         target.HandleSpell(spell, caster);
-        StartCoroutine(WaitForSpellEndAndChangeTurn(spell));
+        StartCoroutine(WaitForSpellEndAndChangeTurn(spell, paddingEnd : 1));
         battleText.text = caster.name + "は" + spell.trueName + "をつかった！";
     }
 
     ////////////       Only used by Enemy!       /////////////////
     public IEnumerator CastAfterSeconds(float secs, Spell spell){
-
         yield return new WaitForSeconds(secs);
         CastSpell(spell, enemy, player);
         yield break;
     }
 
-    IEnumerator WaitForSpellEndAndChangeTurn(Spell spell){
-		yield return new WaitForSeconds(spell.getDuration());
+    IEnumerator WaitForSpellEndAndChangeTurn(Spell spell, float paddingEnd = 0){
+		yield return new WaitForSeconds(spell.getDuration() + paddingEnd);
 		stateMachine.currentState.ChangeTurn();
 		yield break;
     }

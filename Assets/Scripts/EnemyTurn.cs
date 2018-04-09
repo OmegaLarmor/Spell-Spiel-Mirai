@@ -16,7 +16,7 @@ public class EnemyTurn : IState
 
     public void Enter()
     {
-        //Debug.Log("Enemy turn start!");
+        BattleController.instance.battleText.text = BattleController.instance.enemy.name + "は考えている。。。";
         BattleController.instance.player.animator.SetBool("Casting", false);
 
         boolVar = BattleController.instance.isPlayerTurn;
@@ -46,7 +46,7 @@ public class EnemyTurn : IState
     }
 
     public void ChangeTurn(){
-        Debug.Log("Triggering player turn");
+        //Debug.Log("Triggering player turn");
         machine.ChangeState(new PlayerTurn());
         boolVar.value = true; //toggles UI with outside bool object
     }
@@ -65,8 +65,7 @@ public class EnemyTurn : IState
             return null;
         }
 
-        //int i = Random.Range(0, spellLength); //pick random spell (I am an AI coder)
-        int i = 2;
+        int i = Random.Range(0, spellLength); //pick random spell (I am an AI coder)
         return BattleController.instance.enemy.spells[i];
 
     }

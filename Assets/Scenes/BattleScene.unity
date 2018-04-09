@@ -595,6 +595,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114233983526460538, guid: 1d0a5a15ebb39494ba01c4dfc47be792,
+        type: 2}
+      propertyPath: lifetime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d0a5a15ebb39494ba01c4dfc47be792, type: 2}
   m_IsPrefabParent: 0
@@ -713,10 +718,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1836649089507854, guid: 10a431a2a95f04b4b81af2307cb1513d, type: 2}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4142862769132758, guid: 10a431a2a95f04b4b81af2307cb1513d, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

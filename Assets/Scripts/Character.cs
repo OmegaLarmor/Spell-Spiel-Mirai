@@ -9,6 +9,8 @@ public class Character : MonoBehaviour {
 	public FloatReference attack;
 	public FloatReference defense;
 
+	private float rebelReduc = 0.35f;
+
 	public System.Action Die;
 
 	public Animator animator;
@@ -32,11 +34,12 @@ public class Character : MonoBehaviour {
 
 	}
 
-	public void HandleSpell(Spell spell, Character caster) {
+	public void HandleSpell(Spell spell, Character caster, bool rebel = false) {
 
 		float attackBoost = caster.attack.value;
 		float defenseBoost = caster.defense.value;
 		float toDeal = spell.baseDamage + attackBoost - defenseBoost;
+		if (rebel) toDeal *= rebelReduc;
 		if (toDeal < 0) toDeal = 0;
 		StartCoroutine (DamageAfterSeconds(toDeal, spell.getDuration()));
 	}

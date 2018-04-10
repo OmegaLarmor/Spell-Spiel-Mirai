@@ -12,7 +12,6 @@ public class EnemyTurn : IState
     public BooleanVariable boolVar; //tells others if it is playerTurn or not
 
     private Spell toCast; //chosen by AI
-    private ArrayList spellChoices = new ArrayList();
 
     public void Enter()
     {
@@ -21,7 +20,7 @@ public class EnemyTurn : IState
 
         boolVar = BattleController.instance.isPlayerTurn;
 
-        toCast = ChooseEnemySpell();
+        toCast = BattleController.instance.ChooseRandomSpell(BattleController.instance.enemy);
 
         if (toCast == null) {
             Debug.Log("I didn't have any spells to cast, so you can have your turn back...");
@@ -33,11 +32,7 @@ public class EnemyTurn : IState
 
     public IState Execute()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            return BattleController.playerTurn;
-        }
-        else return null;
+        return null;
     }
 
     public void Exit()
@@ -47,8 +42,8 @@ public class EnemyTurn : IState
 
     public void ChangeTurn(){
         //Debug.Log("Triggering player turn");
-        machine.ChangeState(new PlayerTurn());
         boolVar.value = true; //toggles UI with outside bool object
+        machine.ChangeState(new PlayerTurn());
     }
 
     public void SetParentMachine(StateMachine machine){
@@ -56,18 +51,6 @@ public class EnemyTurn : IState
     }
     ////////////////////////////////////////////////////
 
-    private Spell ChooseEnemySpell(){
 
-        int spellLength = BattleController.instance.enemy.spells.Length;
-        
-        if (spellLength == 0)
-        {
-            return null;
-        }
-
-        int i = Random.Range(0, spellLength); //pick random spell (I am an AI coder)
-        return BattleController.instance.enemy.spells[i];
-
-    }
 
 }

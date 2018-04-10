@@ -24,6 +24,9 @@ public class PlayerTurn : IState
 
         BattleController.instance.battleText.text = BattleController.instance.player.name + "の番です！よく言ってね！";
 
+        //Generate new forced spell
+        BattleController.instance.mustBeCast = BattleController.instance.ChooseRandomSpell(BattleController.instance.player);
+
     }
 
     public IState Execute()

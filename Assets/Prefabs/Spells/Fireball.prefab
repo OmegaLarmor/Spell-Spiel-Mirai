@@ -200,6 +200,8 @@ MonoBehaviour:
   - "\u30B7\u30CD\u30DE"
   - "\u3057\u3060\u307E"
   - "\u3061\u3060\u307E"
+  - "\u3057\u306A\u307E"
+  - "\u5E73\u9593"
 --- !u!114 &114738860112246296
 MonoBehaviour:
   m_ObjectHideFlags: 1

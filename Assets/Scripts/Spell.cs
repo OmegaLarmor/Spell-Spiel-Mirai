@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Spell : MonoBehaviour
@@ -17,11 +18,16 @@ public class Spell : MonoBehaviour
     public bool spawnAtUser;
 
     public string[] wordsAllowed;
-
+/* 
+    public GameObject textBox; //UI text box that can be greyed out
+    private Image image;
+    public Sprite disableSprite;
+*/
     // Use this for initialization
     void Start()
     {
-
+        //image = textBox.GetComponent<Image>();
+        //ToggleUIBox(false);
     }
 
     // Update is called once per frame
@@ -55,4 +61,17 @@ public class Spell : MonoBehaviour
         return  null; //if we get here, nothing was found :/
 
     }
+/* 
+    //Might be sinful? Should be fine in this case
+    public void ToggleUIBox(bool enable){
+
+        if (textBox == null || disableSprite == null){
+            return;
+        }
+
+        if (!enable){
+            image.sprite = disableSprite;
+        }
+
+    }*/
 }

@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trueName: "\u30EF\u30CB\u30AB\u30CB"
-  baseDamage: 1
+  baseDamage: 10
   mustFlip: 1
   selfCast: 0
   spawnAtUser: 1
@@ -95,6 +95,7 @@ MonoBehaviour:
   - "\u30DE\u4E8C\u30D1\u4E8C"
   - "\u30EF\u30CB"
   - "\u30AB\u30CB"
+  - "\u30EF\u30CB\u72E9\u308A"
 --- !u!212 &212415685291180584
 SpriteRenderer:
   m_ObjectHideFlags: 1

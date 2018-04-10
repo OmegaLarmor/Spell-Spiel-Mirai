@@ -17,11 +17,12 @@ public class BattleController : MonoBehaviour
     public BooleanVariable isPlayerTurn; //kinda hacky, but very useful to toggle UI
 
     public VoiceHandler voice;
-    private Dictionary<string, Spell> spellWordPairs = new Dictionary<string, Spell>();
     public Text battleText;
 
-    public Spell fireball;
-    public Spell waterGun;
+    public Spell mustBeCast;
+    public Sprite disableBox;
+    public Sprite enableBox;
+    public Transform spellUI;
 
     void Awake(){
 
@@ -38,9 +39,6 @@ public class BattleController : MonoBehaviour
     {
         stateMachine = GetComponent<StateMachine>();
 
-        spellWordPairs.Add("火玉", fireball);
-        spellWordPairs.Add("水玉", waterGun);
-
         PlayerTurn.startRecordingEvent += StartRecording;
         PlayerTurn.stopRecordingEvent += StopRecording;
 
@@ -50,10 +48,6 @@ public class BattleController : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Alpha1)){
-            TrySpellString("火玉");
-        }
 
         stateMachine.ExecuteStateUpdate();
 
@@ -76,10 +70,18 @@ public class BattleController : MonoBehaviour
         }
          
         Spell theSpell = null;
+        bool rebel = false; //if we didn't say the spell that was asked
         
         for (int i = 0; i < player.spells.Length; i++){
             theSpell = player.spells[i].CheckInWords(transcript);
             if (theSpell != null) break;
+        }
+
+        if (theSpell != mustBeCast){
+
+            Debug.Log("That's not the spell I wanted! But you can cast a worse version I guess...");
+            rebel = true;
+
         }
 
         if (theSpell == null){
@@ -90,11 +92,11 @@ public class BattleController : MonoBehaviour
 
         //we did it! We said a valid spell! Now, we cast it.
         else{
-            CastSpell(theSpell, player, enemy); //cast x from a to b
+            CastSpell(theSpell, player, enemy, rebel : rebel); //cast x from a to b
         }
     }
 
-    public void CastSpell(Spell spell, Character caster, Character target)
+    public void CastSpell(Spell spell, Character caster, Character target, bool rebel = false)
     {
         //Handle the instantiation
         float spawnX = spell.spawnAtUser ? caster.transform.position.x : target.transform.position.x;
@@ -102,17 +104,34 @@ public class BattleController : MonoBehaviour
         float spawnFlip = spell.mustFlip && !(isPlayerTurn.value) ? 180 : 0;
         Instantiate(spell, new Vector3(spawnX,spawnY,0), Quaternion.Euler(0,0,spawnFlip));
 
-        target.HandleSpell(spell, caster);
+        target.HandleSpell(spell, caster, rebel);
         StartCoroutine(WaitForSpellEndAndChangeTurn(spell, paddingEnd : 1));
         battleText.text = caster.name + "は" + spell.trueName + "をつかった！";
     }
 
-    ////////////       Only used by Enemy!       /////////////////
+    public Spell ChooseRandomSpell(Character caster) {
+
+        int spellLength = caster.spells.Length;
+        
+        if (spellLength == 0)
+        {
+            return null;
+        }
+        int i = Random.Range(0, spellLength); //pick random spell (I am an AI coder)
+
+        CloseAllSpellUIExceptIndex(i);
+
+        return caster.spells[i];
+
+    }
+
+
+    /// Only used by Enemy!
     public IEnumerator CastAfterSeconds(float secs, Spell spell){
         yield return new WaitForSeconds(secs);
         CastSpell(spell, enemy, player);
         yield break;
-    }
+    }///
 
     IEnumerator WaitForSpellEndAndChangeTurn(Spell spell, float paddingEnd = 0){
 		yield return new WaitForSeconds(spell.getDuration() + paddingEnd);
@@ -120,12 +139,35 @@ public class BattleController : MonoBehaviour
 		yield break;
     }
 
-    //Resets the Scriptable objects to their required value
+    //Resets the Scriptable objects to their required initial value
     public void InitializeBattleVars(){
 
         player.currentHP.variable.value = player.maxHP.value;
         enemy.currentHP.variable.value = enemy.maxHP.value;
         isPlayerTurn.value = true;
+
+    }
+
+    //Sinful
+    public void CloseAllSpellUIExceptIndex(int index){
+
+        //Transform spellUI = GameObject.Find("SpellUI").transform; //wait for it
+        Image[] images = spellUI.GetComponentsInChildren<Image>(); //wait for it
+
+        for (int i = 0; i < spellUI.childCount; i++){
+
+            if (images[i] != null){
+
+                if (i != index){
+                
+                images[i].sprite = disableBox;
+                }
+
+                else if (i == index ){
+                    images[i].sprite = enableBox;
+                }
+            }                      
+        }
 
     }
 

@@ -72,7 +72,7 @@ public class PlayerTurn : IState
 //////////////////////////////////////////////////////////////////////
 
     private void EndBattleWin(){
-        Debug.Log("We won!");
+        machine.ChangeState(new BattleWinState());
     }
 
 }

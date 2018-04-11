@@ -144,6 +144,7 @@ public class BattleController : MonoBehaviour
 
         player.currentHP.variable.value = player.maxHP.value;
         enemy.currentHP.variable.value = enemy.maxHP.value;
+        enemy.maxHP.variable.value = enemy.maxHP.value; //in case we're using constant value
         isPlayerTurn.value = true;
 
     }
@@ -169,6 +170,11 @@ public class BattleController : MonoBehaviour
             }                      
         }
 
+    }
+
+    public void EndBattleWin(){
+        
+        battleText.text = player.name + "が" + enemy.name + "をたおした!";
     }
 
 }

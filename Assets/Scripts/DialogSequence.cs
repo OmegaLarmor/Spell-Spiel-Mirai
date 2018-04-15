@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using System.IO;
 using System;
@@ -34,7 +35,7 @@ public class DialogSequence : MonoBehaviour {
 
 	void Update(){
 
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Return)) {
 
 			AdvanceText();
 
@@ -44,7 +45,7 @@ public class DialogSequence : MonoBehaviour {
 	void AdvanceText(){
 
 		if (currentIndex == segments.Count - 1){
-			Debug.Log("Box finished");
+			SceneManager.LoadScene("BattleScene");
 			return;
 		}
 

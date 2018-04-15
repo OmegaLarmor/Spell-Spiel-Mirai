@@ -5,7 +5,7 @@ It's a demo for a Japanese learning game, which I've dubbed "Kotobatoru"!
 This is a spin on a previous game I created within Gamkedo club, an online game development community.
 The original, called Spell Spiel, was a touch-typing game; now it's a Japanese speaking game!
 
-The gameplay is simple; every turn you are shown a word in Japanese. Simply press and hold Shift to start recording your voice, and release Shift to stop your spell cast.
+The gameplay is simple: every turn, you are shown a word in Japanese. Simply press and hold Shift to start recording your voice, and release Shift to stop your spell cast.
 If pronounced correctly, you'll land a sweet magic spell!
 
 I made almost all this game myself, along with some assets from Gamkedo members and the voice recognition being a Unity purchased asset.

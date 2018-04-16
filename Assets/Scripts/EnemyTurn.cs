@@ -24,7 +24,6 @@ public class EnemyTurn : IState
 
         if (toCast == null) {
             Debug.Log("I didn't have any spells to cast, so you can have your turn back...");
-            ChangeTurn();
         }
 
         BattleController.instance.StartCoroutine(BattleController.instance.CastAfterSeconds(enemyThinkTime, toCast)); //why is StartCoroutine a MonoBehaviour method.... :/
@@ -37,7 +36,7 @@ public class EnemyTurn : IState
 
     public void Exit()
     {
-       // Debug.Log("Enemy turn ended");
+
     }
 
     public void ChangeTurn(){

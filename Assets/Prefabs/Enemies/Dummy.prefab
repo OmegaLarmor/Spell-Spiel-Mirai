@@ -344,10 +344,7 @@ MonoBehaviour:
     constantValue: 0
     variable: {fileID: 11400000, guid: 91926c18e1abb8146acb11fa63acb1ae, type: 2}
   animator: {fileID: 0}
-  spells:
-  - {fileID: 114466387444990242, guid: 888d067c00da8d042a46095b40da9476, type: 2}
-  - {fileID: 114466387444990242, guid: 635e08ae5e4d61f46b5d0eff0e75792e, type: 2}
-  - {fileID: 114179935872528588, guid: d0fdacc14f8bd174aafc4ccced538532, type: 2}
+  spells: []
 --- !u!114 &114830020803141856
 MonoBehaviour:
   m_ObjectHideFlags: 1

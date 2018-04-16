@@ -18,7 +18,6 @@ public class PlayerTurn : IState
     public void Enter()
     {
         BattleController.instance.voice.shareRecognitionEvent += BattleController.instance.TrySpellString;
-        //BattleController.instance.voice.shareRecognitionEvent += IfSuccessYieldTurn;
         BattleController.instance.enemy.Die += EndBattleWin;
         boolVar = BattleController.instance.isPlayerTurn;
 
@@ -54,7 +53,6 @@ public class PlayerTurn : IState
 
     public void Exit()
     {
-        //Debug.Log("Player turn ended");
         BattleController.instance.voice.shareRecognitionEvent -= BattleController.instance.TrySpellString;
         BattleController.instance.enemy.Die -= EndBattleWin;
     }

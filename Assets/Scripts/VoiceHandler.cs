@@ -42,6 +42,7 @@ public class VoiceHandler : MonoBehaviour
 
 	public void StartRecording()
         {
+            Debug.Log("Record");
             if(isRecording || isWaiting){
                 Debug.Log("Hey! We can't record now!");
                 return;
@@ -49,7 +50,6 @@ public class VoiceHandler : MonoBehaviour
             isRecording = true;
             isWaiting = false;
 
-            _speechRecognitionResult.text = "";
             _speechRecognition.StartRecord(_isRuntimeDetectionToggle);
 
             StartCoroutine(LimitRecordTime(maxWaitTime));

@@ -3,66 +3,86 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Flicker : MonoBehaviour {
+public class Flicker : MonoBehaviour
+{
 
-	//Currently only works for GOs with image components that must flicker
+    //Currently only works for GOs with image components and/or text components
 
-	public float waitBeforeStart;
-	public float waitBetweenFlickers;
-	public int flickerNumber;
+    public float waitBeforeStart;
+    public float waitBetweenFlickers;
+    public int flickerNumber;
 
-	public bool loop;
-	public bool startHidden;
+    public bool loop;
+    public bool startHidden;
 
-	private Image image;
+    private Image image;
+	private string initialText;
 
-	// Use this for initialization
-	void Start () {
+    public bool hasImage;
+    public bool hasText;
 
-		image = GetComponent<Image>();
-		StartCoroutine(StartFlicker());
-
-		if (startHidden) {
-			image.enabled = false;
-		}
-		
-	}
-
-	void OnEnable() {
-
-		StartCoroutine(StartFlicker());
-
-	}
-
-	void OnDisable() {
-
-		StopCoroutine(StartFlicker());
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	IEnumerator StartFlicker ()
+    // Use this for initialization
+    void Start()
     {
-		yield return new WaitForSeconds(waitBeforeStart);
 
-        bool Switch = false;
+        if (hasImage) { image = GetComponent<Image>(); }
+		if (hasText) { initialText = GetComponent<Text>().text;}
+
+        StartCoroutine(StartFlicker());
+
+        if (startHidden)
+        {
+            Switch(false);
+        }
+
+    }
+
+    void OnEnable()
+    {
+
+        StartCoroutine(StartFlicker());
+
+    }
+
+    void OnDisable()
+    {
+
+        StopCoroutine(StartFlicker());
+
+    }
+
+    void Switch(bool onOff)
+    {
+        
+		if (hasImage){
+			image.enabled = onOff;
+		}
+
+		if (hasText){
+			GetComponent<Text>().text = onOff ? initialText : "";
+		}
+
+    }
+
+    IEnumerator StartFlicker()
+    {
+        yield return new WaitForSeconds(waitBeforeStart);
+
+        bool toSwitch = false;
         for (int i = 0; i < flickerNumber; i++)
         {
-            if (Switch == true)
+            if (toSwitch == true)
             {
-				image.enabled = false;
-                Switch = false;
+                Switch(false);
+                toSwitch = false;
             }
             else
             {
-				image.enabled = true;
-                Switch = true;
+                Switch(true);
+                toSwitch = true;
             }
-            if (loop){
+            if (loop)
+            {
                 i--; //retourne en arrière
             }
             yield return new WaitForSeconds(waitBetweenFlickers);

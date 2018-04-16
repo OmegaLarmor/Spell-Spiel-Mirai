@@ -60,10 +60,10 @@ public class Character : MonoBehaviour {
 	}
 
 	public void CheckIfDead(){
-		//Reminder: Action != null checks if there are listeners
+		//Reminder: To do Action != null is meant to check if there are listeners
 		if (currentHP.value <= 0 && Die != null){
 			Die();
-			animator.SetBool("Dead", true);
+			if (animator){ animator.SetBool("Dead", true); }
 		}
 	}
 }

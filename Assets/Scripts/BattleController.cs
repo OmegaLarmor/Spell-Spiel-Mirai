@@ -24,6 +24,10 @@ public class BattleController : MonoBehaviour
     public Sprite enableBox;
     public Transform spellUI;
 
+    public IntReference progress;
+    public Character[] enemySequence;
+
+
     void Awake(){
 
         //Join the dark side
@@ -39,11 +43,24 @@ public class BattleController : MonoBehaviour
     {
         stateMachine = GetComponent<StateMachine>();
 
+
         PlayerTurn.startRecordingEvent += StartRecording;
         PlayerTurn.stopRecordingEvent += StopRecording;
 
+        if (progress.value > progress.maxValue) {
+            progress.variable.value = 0;
+            Debug.Log("Had to reset the progress counter...");
+        }
+        enemy = Instantiate(enemySequence[progress.value]);
+        enemy.name = enemy.name.Replace("(Clone)","");
+
 		stateMachine.ChangeState(playerTurn); //Start at player turn by default
         InitializeBattleVars();
+    }
+
+    void OnDestroy(){
+        PlayerTurn.startRecordingEvent -= StartRecording;
+        PlayerTurn.stopRecordingEvent -= StopRecording;
     }
 
     void Update()
@@ -54,6 +71,10 @@ public class BattleController : MonoBehaviour
     }
 
     public void StartRecording(){
+        Debug.Log(voice == null);
+        if (voice == null){
+            voice = GameObject.Find("Voice").GetComponent<VoiceHandler>();
+        }
         voice.StartRecording();
     }
     public void StopRecording(){
@@ -66,6 +87,8 @@ public class BattleController : MonoBehaviour
     {
         if (transcript == "Failed"){
             Debug.Log("Voice recognition failed. Ignoring cast...");
+            player.animator.SetBool("Casting", false);
+            battleText.text = "何もおこらなかった。。。";
             return;
         }
          
@@ -98,6 +121,12 @@ public class BattleController : MonoBehaviour
 
     public void CastSpell(Spell spell, Character caster, Character target, bool rebel = false)
     {
+        if (spell == null){
+            battleText.text = caster.name + "は何もしかった！";
+            StartCoroutine(WaitForSpellEndAndChangeTurn(spell, paddingEnd : 1));
+            return;
+        }
+
         //Handle the instantiation
         float spawnX = spell.spawnAtUser ? caster.transform.position.x : target.transform.position.x;
         float spawnY = spell.spawnAtUser ? caster.transform.position.y : target.transform.position.y;
@@ -117,6 +146,7 @@ public class BattleController : MonoBehaviour
         {
             return null;
         }
+
         int i = Random.Range(0, spellLength); //pick random spell (I am an AI coder)
 
         CloseAllSpellUIExceptIndex(i);
@@ -134,7 +164,8 @@ public class BattleController : MonoBehaviour
     }///
 
     IEnumerator WaitForSpellEndAndChangeTurn(Spell spell, float paddingEnd = 0){
-		yield return new WaitForSeconds(spell.getDuration() + paddingEnd);
+        float duration = (spell != null ? spell.getDuration() : 0);
+		yield return new WaitForSeconds(duration + paddingEnd);
 		stateMachine.currentState.ChangeTurn();
 		yield break;
     }

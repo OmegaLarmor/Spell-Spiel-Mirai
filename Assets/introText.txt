@@ -1,14 +1,14 @@
 Hi Tofugu team!
 I'm happy to present to you my project/application to your internship.
-It's a demo for a Japanese learning game, which I've dubbed "Kotobatoru"!
+It's a demo for a Japanese learning game!
 
 This is a spin on a previous game I created within Gamkedo club, an online game development community.
 The original, called Spell Spiel, was a touch-typing game; now it's a Japanese speaking game!
 
-The gameplay is simple: every turn, you are shown a word in Japanese. Simply press and hold Shift to start recording your voice, and release Shift to stop your spell cast.
+The gameplay is simple: every turn, you are shown a word in Japanese. Simply press and hold Shift to start recording your voice, and release to stop your spell cast.
 If pronounced correctly, you'll land a sweet magic spell!
 
-I made almost all this game myself, along with some assets from Gamkedo members and the voice recognition being a Unity purchased asset.
+I made almost all of this game myself, along with some assets from Gamkedo members and the voice recognition being a Unity purchased asset.
 
 You can beat it fairly quickly (10 min), and the gameplay isn't fully fleshed out: the objective is getting the player to repeat a few simple words in Japanese.
 It's meant as a teaser of what a Japanese learning RPG could look like.

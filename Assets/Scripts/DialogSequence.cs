@@ -35,9 +35,15 @@ public class DialogSequence : MonoBehaviour {
 
 	void Update(){
 
-		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Return)) {
+		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.RightArrow)) {
 
 			AdvanceText();
+
+		}
+
+		else if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.LeftArrow)){
+
+			RewindText();
 
 		}
 	}
@@ -45,11 +51,30 @@ public class DialogSequence : MonoBehaviour {
 	void AdvanceText(){
 
 		if (currentIndex == segments.Count - 1){
-			SceneManager.LoadScene("BattleScene");
+
+			if (SceneManager.GetActiveScene().name == "IntroSequence"){
+				SceneManager.LoadScene("BattleScene");
+			}
+
+			else if (SceneManager.GetActiveScene().name == "EndSequence"){
+				SceneManager.LoadScene("Credits");
+			}
+
 			return;
 		}
 
 		currentIndex++;
+		UIText.text = segments[currentIndex];
+
+	}
+
+	void RewindText(){
+
+		if (currentIndex == 0){
+			return;
+		}
+
+		currentIndex--;
 		UIText.text = segments[currentIndex];
 
 	}

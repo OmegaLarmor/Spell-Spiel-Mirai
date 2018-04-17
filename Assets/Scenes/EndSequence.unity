@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: endingText.txt
   UIText: {fileID: 0}
+  textFile: {fileID: 4900000, guid: 7af98ea679588b74697581813dacb7d3, type: 3}
 --- !u!114 &41222375
 MonoBehaviour:
   m_ObjectHideFlags: 0

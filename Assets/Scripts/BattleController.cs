@@ -27,6 +27,8 @@ public class BattleController : MonoBehaviour
     public IntReference progress;
     public Character[] enemySequence;
 
+    public GameObject perfectPoof;
+
 
     void Awake(){
 
@@ -68,6 +70,10 @@ public class BattleController : MonoBehaviour
 
         stateMachine.ExecuteStateUpdate();
 
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            Application.Quit();
+        }
+
     }
 
     public void StartRecording(){
@@ -94,32 +100,36 @@ public class BattleController : MonoBehaviour
          
         Spell theSpell = null;
         bool rebel = false; //if we didn't say the spell that was asked
+        bool perfect = false; //if we nailed the prununciation
         
         for (int i = 0; i < player.spells.Length; i++){
             theSpell = player.spells[i].CheckInWords(transcript);
             if (theSpell != null) break;
         }
 
+        //The extras
         if (theSpell != mustBeCast){
-
             Debug.Log("That's not the spell I wanted! But you can cast a worse version I guess...");
             rebel = true;
-
+        }
+        if (theSpell != null && transcript == theSpell.trueName){
+            perfect = true;
         }
 
         if (theSpell == null){
             Debug.Log("I got nothing... Might wanna add " + transcript + "!");
             battleText.text = "なにもおこらなかった．．．";
+            player.animator.SetBool("Casting", false);
             return;
         }
 
         //we did it! We said a valid spell! Now, we cast it.
         else{
-            CastSpell(theSpell, player, enemy, rebel : rebel); //cast x from a to b
+            CastSpell(theSpell, player, enemy, rebel : rebel, perfect:perfect); //cast x from a to b
         }
     }
 
-    public void CastSpell(Spell spell, Character caster, Character target, bool rebel = false)
+    public void CastSpell(Spell spell, Character caster, Character target, bool rebel = false, bool perfect = false)
     {
         if (spell == null){
             battleText.text = caster.name + "は何もしかった！";
@@ -132,8 +142,11 @@ public class BattleController : MonoBehaviour
         float spawnY = spell.spawnAtUser ? caster.transform.position.y : target.transform.position.y;
         float spawnFlip = spell.mustFlip && !(isPlayerTurn.value) ? 180 : 0;
         Instantiate(spell, new Vector3(spawnX,spawnY,0), Quaternion.Euler(0,0,spawnFlip));
+        if (perfect){
+            Instantiate(perfectPoof, new Vector3(caster.transform.position.x + 1.5f,caster.transform.position.y,0), Quaternion.identity);
+        }
 
-        target.HandleSpell(spell, caster, rebel);
+        target.HandleSpell(spell, caster, rebel, perfect);
         StartCoroutine(WaitForSpellEndAndChangeTurn(spell, paddingEnd : 1));
         battleText.text = caster.name + "は" + spell.trueName + "をつかった！";
     }

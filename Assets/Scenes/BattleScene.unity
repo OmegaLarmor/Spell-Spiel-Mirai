@@ -4161,6 +4161,8 @@ MonoBehaviour:
   - {fileID: 114302650727772356, guid: 2778a0e7ce73962488417ed75dbb9c31, type: 2}
   - {fileID: 114467917208936870, guid: 4cde524b8107972428d2648596a56c0f, type: 2}
   - {fileID: 114472354829892266, guid: c294146fa6c54c34eab7db6dfd1c903c, type: 2}
+  perfectPoof: {fileID: 1595123000182928, guid: 7ac8b82f5691be644aa2dd317da0d791,
+    type: 2}
 --- !u!114 &479747637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5307,7 +5309,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.753
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -9281,8 +9283,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1913541367}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9160671, y: 0.9546156, z: -0.099149585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

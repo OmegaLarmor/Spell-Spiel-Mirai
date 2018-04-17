@@ -77,7 +77,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 97349d7bc3f7cbc428ebb96836bb7f21, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.639
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -188,7 +188,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trueName: "\u96F7"
-  baseDamage: 10
+  baseDamage: 15
+  mustFlip: 0
+  selfCast: 0
+  spawnAtUser: 0
   wordsAllowed:
   - "\u96F7"
   - "\u30BF\u30DF\u30E4"

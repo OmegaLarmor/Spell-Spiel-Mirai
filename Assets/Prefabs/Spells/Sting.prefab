@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trueName: "\u30D4\u30EA\u30D4\u30EA"
-  baseDamage: 10
+  baseDamage: 15
   mustFlip: 1
   selfCast: 0
   spawnAtUser: 0

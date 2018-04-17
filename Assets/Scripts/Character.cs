@@ -34,12 +34,13 @@ public class Character : MonoBehaviour {
 
 	}
 
-	public void HandleSpell(Spell spell, Character caster, bool rebel = false) {
+	public void HandleSpell(Spell spell, Character caster, bool rebel = false, bool perfect = false) {
 
 		float attackBoost = caster.attack.value;
 		float defenseBoost = caster.defense.value;
 		float toDeal = spell.baseDamage + attackBoost - defenseBoost;
 		if (rebel) toDeal *= rebelReduc;
+		if (perfect) toDeal *= 2;
 		if (toDeal < 0) toDeal = 0;
 		StartCoroutine (DamageAfterSeconds(toDeal, spell.getDuration()));
 	}
@@ -63,7 +64,7 @@ public class Character : MonoBehaviour {
 		//Reminder: To do Action != null is meant to check if there are listeners
 		if (currentHP.value <= 0 && Die != null){
 			Die();
-			if (animator){ animator.SetBool("Dead", true); }
+			//if (animator){ animator.SetBool("Dead", true); }
 		}
 	}
 }

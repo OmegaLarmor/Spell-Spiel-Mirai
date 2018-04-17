@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trueName: "\u6C37"
-  baseDamage: 10
+  baseDamage: 15
   mustFlip: 0
   selfCast: 0
   spawnAtUser: 1

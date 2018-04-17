@@ -42,7 +42,6 @@ public class VoiceHandler : MonoBehaviour
 
 	public void StartRecording()
         {
-            Debug.Log("Record");
             if(isRecording || isWaiting){
                 Debug.Log("Hey! We can't record now!");
                 return;

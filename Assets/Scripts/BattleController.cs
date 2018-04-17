@@ -77,7 +77,6 @@ public class BattleController : MonoBehaviour
     }
 
     public void StartRecording(){
-        Debug.Log(voice == null);
         if (voice == null){
             voice = GameObject.Find("Voice").GetComponent<VoiceHandler>();
         }

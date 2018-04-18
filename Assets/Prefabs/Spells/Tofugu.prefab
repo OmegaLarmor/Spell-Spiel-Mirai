@@ -160,6 +160,9 @@ MonoBehaviour:
   wordsAllowed:
   - "\u8C46\u8150\u5177"
   - "\u8C46\u8150"
+  - "\u30C8\u30C3\u30AF"
+  - TOEFL
+  - "\u7C50\u5BB6\u5177"
 --- !u!114 &114208478530518052
 MonoBehaviour:
   m_ObjectHideFlags: 1

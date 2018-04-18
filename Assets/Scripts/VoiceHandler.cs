@@ -20,8 +20,8 @@ public class VoiceHandler : MonoBehaviour
     public bool isWaiting = false;
     public float maxWaitTime = 5;
 
-    public float loopCount = 0; //fucking hell
-    public Text loopText;
+    //public float loopCount = 0; //fucking hell
+    //public Text loopText;
 
     // Use this for initialization
     void Start()
@@ -45,7 +45,7 @@ public class VoiceHandler : MonoBehaviour
 
 	public void StartRecording()
         {
-            Debug.Log("Record");
+            //Debug.Log("Record");
             if(isRecording || isWaiting){
                 Debug.Log("Hey! We can't record now!");
                 return;
@@ -91,8 +91,8 @@ public class VoiceHandler : MonoBehaviour
             //_speechRecognitionResult.text = "Word heard: " + bestFit;
 
             //Debug.Log("Called RecognitionSuccessHandler");
-            loopCount++;
-            loopText.text = loopCount.ToString();
+            //loopCount++;
+            //loopText.text = loopCount.ToString();
 
             if (shareRecognitionEvent != null){
                 shareRecognitionEvent(bestFit);

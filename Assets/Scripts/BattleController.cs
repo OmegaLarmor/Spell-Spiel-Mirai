@@ -74,6 +74,11 @@ public class BattleController : MonoBehaviour
             Application.Quit();
         }
 
+        if (Input.GetKeyDown(KeyCode.L)){
+            
+            stateMachine.ChangeState(new BattleLossState());
+        }
+
     }
 
     public void StartRecording(){
@@ -213,11 +218,6 @@ public class BattleController : MonoBehaviour
             }                      
         }
 
-    }
-
-    public void EndBattleWin(){
-        
-        battleText.text = player.name + "が" + enemy.name + "をたおした!";
     }
 
 }

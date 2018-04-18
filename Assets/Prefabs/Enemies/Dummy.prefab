@@ -328,8 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP:
-    useConstant: 0
-    constantValue: 0
+    useConstant: 1
+    constantValue: 40
     variable: {fileID: 11400000, guid: 00ed9dbbc6f29d34f84d046914844dcb, type: 2}
   currentHP:
     useConstant: 0

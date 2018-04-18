@@ -18,6 +18,7 @@ public class EnemyTurn : IState
         BattleController.instance.battleText.text = BattleController.instance.enemy.name + "は考えている。。。";
         BattleController.instance.player.animator.SetBool("Casting", false);
 
+        BattleController.instance.player.Die += EndBattleLoss;
         boolVar = BattleController.instance.isPlayerTurn;
 
         toCast = BattleController.instance.ChooseRandomSpell(BattleController.instance.enemy);
@@ -36,11 +37,11 @@ public class EnemyTurn : IState
 
     public void Exit()
     {
-
+        BattleController.instance.player.Die -= EndBattleLoss;
     }
 
     public void ChangeTurn(){
-        //Debug.Log("Triggering player turn");
+
         boolVar.value = true; //toggles UI with outside bool object
         machine.ChangeState(new PlayerTurn());
     }
@@ -50,6 +51,9 @@ public class EnemyTurn : IState
     }
     ////////////////////////////////////////////////////
 
+    public void EndBattleLoss(){
 
+        machine.ChangeState(new BattleLossState());
+    }
 
 }

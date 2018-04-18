@@ -30,10 +30,6 @@ public class PlayerTurn : IState
 
     public IState Execute()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            return BattleController.enemyTurn;
-        }
         if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.LeftShift)){
 
             if (startRecordingEvent != null) startRecordingEvent();

@@ -30,16 +30,15 @@ public class PlayerTurn : IState
 
     public IState Execute()
     {
-        if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.LeftShift)){
+        if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl)){
 
             if (startRecordingEvent != null) startRecordingEvent();
             BattleController.instance.player.animator.SetBool("Casting",true);
 
         }
-        else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift)){
+        else if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.LeftControl)){
 
             if (stopRecordingEvent != null) stopRecordingEvent();
-            //BattleController.instance.player.animator.SetBool("Casting",false);
 
         }
        

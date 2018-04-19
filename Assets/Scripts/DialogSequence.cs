@@ -22,13 +22,8 @@ public class DialogSequence : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		//var sr = new StreamReader(Application.dataPath + "/" + fileName);
-		//var fileContents = sr.ReadToEnd();
-		//sr.Close();
 	
 		segments = new List<string>();
-		//segments.AddRange(fileContents.Split(new [] {"\r\n\r\n"}, StringSplitOptions.None));
 		segments.AddRange(textFile.text.Split(new [] {"\r\n\r\n"}, StringSplitOptions.None));
 		UIText = GetComponentInChildren<Text>();
 

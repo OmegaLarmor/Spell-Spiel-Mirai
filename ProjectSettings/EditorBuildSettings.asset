@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 39b172a403b809f4082d772f82c48901
   - enabled: 1
     path: Assets/Scenes/EndSequence.unity
-    guid: f632a0ab33faaff43ae8cdb061f98f88
+    guid: 1b8de1bec020ba841bb37b807f787f43
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 78fe9b9af9ba3ad4389808dce9d70ae6

@@ -27,7 +27,6 @@ public class DialogSequence : MonoBehaviour {
 		segments.AddRange(textFile.text.Split(new [] {"\r\n\r\n"}, StringSplitOptions.None));
 		UIText = GetComponentInChildren<Text>();
 
-
 		UIText.text = segments[0];
 	}
 
@@ -39,7 +38,7 @@ public class DialogSequence : MonoBehaviour {
 
 		}
 
-		else if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetMouseButtonDown(1)){
+		else if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetMouseButtonDown(1))>{
 
 			RewindText();
 
